@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "author": "Projeto IoT - Lixeira Inteligente",
+  "editor": "wokwi",
+
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": -140,
+      "left": -100,
+      "attrs": {
+        "distance": "20"
+      }
+    },
+
+    {
+      "type": "wokwi-led",
+      "id": "led_verde",
+      "top": -100,
+      "left": 220,
+      "attrs": {
+        "color": "green"
+      }
+    },
+
+    {
+      "type": "wokwi-led",
+      "id": "led_amarelo",
+      "top": -30,
+      "left": 220,
+      "attrs": {
+        "color": "yellow"
+      }
+    },
+
+    {
+      "type": "wokwi-led",
+      "id": "led_vermelho",
+      "top": 40,
+      "left": 220,
+      "attrs": {
+        "color": "red"
+      }
+    },
+
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -80,
+      "left": 140,
+      "attrs": {
+        "value": "220"
+      }
+    },
+
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -10,
+      "left": 140,
+      "attrs": {
+        "value": "220"
+      }
+    },
+
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 60,
+      "left": 140,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+
+  "connections": [
+    [
+      "esp:VIN",
+      "ultrasonic:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "ultrasonic:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D5",
+      "ultrasonic:TRIG",
+      "blue",
+      []
+    ],
+    [
+      "esp:D18",
+      "ultrasonic:ECHO",
+      "green",
+      []
+    ],
+
+    [
+      "esp:D2",
+      "r1:1",
+      "green",
+      []
+    ],
+    [
+      "r1:2",
+      "led_verde:A",
+      "green",
+      []
+    ],
+    [
+      "led_verde:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+
+    [
+      "esp:D4",
+      "r2:1",
+      "yellow",
+      []
+    ],
+    [
+      "r2:2",
+      "led_amarelo:A",
+      "yellow",
+      []
+    ],
+    [
+      "led_amarelo:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+
+    [
+      "esp:D15",
+      "r3:1",
+      "red",
+      []
+    ],
+    [
+      "r3:2",
+      "led_vermelho:A",
+      "red",
+      []
+    ],
+    [
+      "led_vermelho:C",
+      "esp:GND.2",
+      "black",
+      []
+    ]
+  ],
+
+  "dependencies": {}
+}
